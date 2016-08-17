@@ -1,0 +1,31 @@
+{
+  "name": "rehype-plaintext",
+  "version": "1.0.0",
+  "description": "Output plain text from rehype.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noblesamurai/rehype-plaintext"
+  },
+  "keywords": [
+    "rehype",
+    "text"
+  ],
+  "author": "Tim Allen <allen.timothy.email@gmail.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/noblesamurai/rehype-plaintext/issues"
+  },
+  "dependencies": {
+    "unist-util-visit": "^1.1.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.3.4",
+    "rehype-parse": "^2.0.0",
+    "unified": "^4.2.1"
+  }
+}
