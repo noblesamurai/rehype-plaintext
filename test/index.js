@@ -1,8 +1,7 @@
 var expect = require('expect.js'),
     rehypePlaintext = require('..'),
     unified = require('unified'),
-    parseHTML = require('rehype-parse'),
-    inspect = require('unist-util-inspect');
+    parseHTML = require('rehype-parse');
 
 describe('rehype-plaintext', function() {
   describe('using the streams interface', function() {
@@ -16,11 +15,6 @@ describe('rehype-plaintext', function() {
       var result = '';
       s.pipe(unified())
       .use(parseHTML)
-      .use(function () {
-        return function (cst) {
-          console.log(inspect(cst));
-        }
-      })
       .use(rehypePlaintext)
       .on('data', function(s) {
         result += s;
