@@ -15,35 +15,17 @@ $ npm install rehype-plaintext
 ## Example Usage
 
 ``` js
-var rehypePlaintext = require('rehype-plaintext');
-
-var expect = require('expect.js'),
+var rehypePlaintext = require('rehype-plaintext'),
     unified = require('unified'),
     parseHTML = require('rehype-parse'),
-    inspect = require('unist-util-inspect'),
-    Readable = require('stream').Readable;
+    expect = require('expect.js');
 
-var s = new Readable;
-s.push('<p>Hi there <em>my friend</em> I hope you are well.</p>');
-s.push(null);
-
-var result = '';
-s.pipe(unified())
-.use(parseHTML)
-.use(function () {
-  return function (cst) {
-    console.log(inspect(cst));
-  }
-})
-.use(rehypePlaintext)
-.on('data', function(s) {
-  result += s;
-})
-.on('end', function() {
-  expect(result).to.equal('Hi there my friend I hope you are well.');
-  done();
-})
-.on('error', done);
+    unified()
+      .use(parseHTML)
+      .use(rehypePlaintext)
+      .process('<p>Hi there <em>my friend</em> I hope you are well.</p>', function(err, result) {
+        expect(result.toString()).to.equal('Hi there my friend I hope you are well.');
+      });
 ```
 
 # Acknowledgements
